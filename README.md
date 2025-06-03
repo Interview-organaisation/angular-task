@@ -133,7 +133,7 @@ return Math.random() < 0.1
 
 ---
 
-## 📅 Timeline (3 Hours)
+## 📅 Timeline (5 Hours)
 
 
 
@@ -165,8 +165,15 @@ return Math.random() < 0.1
 
 ## 🚀 Submission
 
-- **Push your solution** to this repository (Please create a new branch with your name.).
-- **Submit to**: [hr@mconnectmedia.com](mailto:hr@mconnectmedia.com)
+To submit your solution, please follow the steps below:
+
+1. **Fork this repository** to your own GitHub account.
+2. **Create a new branch** named after yourself (e.g., `feature/your-name`).
+3. **Implement your solution** with **clear and meaningful comments** throughout your code to explain your logic and approach.
+4. **Create a Pull Request (PR)** from your branch to the `main` branch of this repository.
+5. **Send the link to your PR** via email to [hr@mconnectmedia.com](mailto:hr@mconnectmedia.com).
+
+> ⚠️ Make sure your code is clean, well-commented, and follows good development practices.
 
 ---
 
