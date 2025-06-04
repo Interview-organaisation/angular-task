@@ -88,9 +88,9 @@ export class AppComponent {
   });
 
   constructor(
-    private taskService: TaskService,
-    private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private taskService: TaskService, // Inject TaskService
+    private snackBar: MatSnackBar, // Inject MatSnackBar
+    private dialog: MatDialog // Inject MatDialog
   ) {
     // Get tasks and loading state
     this.isLoading$ = this.taskService.getLoadingState().pipe(startWith(true));
@@ -116,11 +116,13 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.taskService.addTask(result).subscribe({
+          // Show success message on complete
           next: () => {
             this.snackBar.open("Task added successfully", "Close", {
               duration: 3000,
             });
           },
+          // Show error message on error
           error: (err) =>
             this.snackBar.open(err.message, "Close", { duration: 3000 }),
         });
@@ -131,12 +133,15 @@ export class AppComponent {
   // Filter tasks based on the provided filters
   private filterTasks(tasks: Task[], filters: TaskFilter): Task[] {
     return tasks.filter((task) => {
+      // Filter tasks based on priority
       const matchesPriority =
         !filters.priority || task.priority === filters.priority;
+      // Filter tasks based on status
       const matchesStatus =
         !filters.status ||
         (filters.status === "completed" && task.isCompleted) ||
         (filters.status === "incomplete" && !task.isCompleted);
+      // Return tasks that match both priority and status
       return matchesPriority && matchesStatus;
     });
   }

@@ -58,8 +58,8 @@ export class TaskFilterComponent {
   constructor(private fb: FormBuilder) {
     // Initialize filter form
     this.filterForm = this.fb.group({
-      priority: [""],
-      status: [""],
+      priority: [""], // Priority filter
+      status: [""], // Status filter
     });
 
     // Subscribe to form value changes

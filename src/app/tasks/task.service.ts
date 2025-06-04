@@ -19,17 +19,18 @@ export class TaskService {
 
   // Load Tasks - Load tasks from local storage on app start
   private loadTasks(): void {
-    const storedTasks = localStorage.getItem(this.STORAGE_KEY);
+    const storedTasks = localStorage.getItem(this.STORAGE_KEY); // Get tasks from local storage
+    // If tasks found
     if (storedTasks) {
-      this.tasks = JSON.parse(storedTasks);
-      this.tasksSubject.next([...this.tasks]);
+      this.tasks = JSON.parse(storedTasks); // Parse JSON string to array
+      this.tasksSubject.next([...this.tasks]); // Emit tasks to subscribers
     }
-    this.loadingSubject.next(false);
+    this.loadingSubject.next(false); // Reset loading state
   }
 
   // Save Tasks - Save tasks to local storage
   private saveTasks(): void {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.tasks));
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.tasks)); // Save tasks to local storage
     this.tasksSubject.next([...this.tasks]); // Ensure new array reference
   }
 
@@ -48,25 +49,27 @@ export class TaskService {
     this.loadingSubject.next(true);
     return new Observable<Task>((observer) => {
       try {
+        // Simulate random failure
         if (Math.random() < 0.1) {
           throw new Error("Failed to add task");
         }
+        // Generate new id
         const newTask = {
           ...task,
           id: this.tasks.length
             ? Math.max(...this.tasks.map((t) => t.id)) + 1
             : 1,
         };
-        this.tasks.push(newTask);
-        this.saveTasks();
-        observer.next(newTask);
-        observer.complete();
+        this.tasks.push(newTask); // Add task to array
+        this.saveTasks(); // Save new task to local storage
+        observer.next(newTask); // Emit new task
+        observer.complete(); // Complete observable
       } catch (err) {
         observer.error(err);
       }
     }).pipe(
-      delay(500),
-      finalize(() => this.loadingSubject.next(false))
+      delay(500), // Simulate server delay
+      finalize(() => this.loadingSubject.next(false)) // Reset loading state
     );
   }
 
@@ -75,24 +78,26 @@ export class TaskService {
     this.loadingSubject.next(true);
     return new Observable<Task>((observer) => {
       try {
+        // Simulate random failure
         if (Math.random() < 0.1) {
           throw new Error("Failed to update task");
         }
-        const index = this.tasks.findIndex((t) => t.id === task.id);
+        const index = this.tasks.findIndex((t) => t.id === task.id); // Find task by id
+        // If task found
         if (index !== -1) {
-          this.tasks[index] = task;
-          this.saveTasks();
-          observer.next(task);
-          observer.complete();
+          this.tasks[index] = task; // Update task
+          this.saveTasks(); // Save tasks to local storage
+          observer.next(task); // Return the updated task
+          observer.complete(); // Complete observable
         } else {
-          throw new Error("Task not found");
+          throw new Error("Task not found"); // Task not found
         }
       } catch (err) {
         observer.error(err);
       }
     }).pipe(
-      delay(500),
-      finalize(() => this.loadingSubject.next(false))
+      delay(500), // Simulate latency
+      finalize(() => this.loadingSubject.next(false)) // Reset loading state
     );
   }
 
@@ -101,19 +106,20 @@ export class TaskService {
     this.loadingSubject.next(true);
     return new Observable<void>((observer) => {
       try {
+        // Simulate random failure
         if (Math.random() < 0.1) {
           throw new Error("Failed to delete task");
         }
-        this.tasks = this.tasks.filter((t) => t.id !== id);
-        this.saveTasks();
-        observer.next();
-        observer.complete();
+        this.tasks = this.tasks.filter((t) => t.id !== id); // Filter out deleted task
+        this.saveTasks(); // Save updated tasks
+        observer.next(); // Emit empty response
+        observer.complete(); // Complete observable
       } catch (err) {
         observer.error(err);
       }
     }).pipe(
-      delay(500),
-      finalize(() => this.loadingSubject.next(false))
+      delay(500), // Simulate latency
+      finalize(() => this.loadingSubject.next(false)) // Reset loading indicator
     );
   }
 }

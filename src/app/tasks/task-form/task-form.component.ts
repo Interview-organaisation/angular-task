@@ -110,16 +110,16 @@ export class TaskFormComponent implements OnInit {
   taskForm: FormGroup; // Reactive form
 
   constructor(
-    private fb: FormBuilder,
-    public dialogRef: MatDialogRef<TaskFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data?: Task
+    private fb: FormBuilder, // Form builder
+    public dialogRef: MatDialogRef<TaskFormComponent>, // Dialog reference
+    @Inject(MAT_DIALOG_DATA) public data?: Task // Inject task data
   ) {
     // Initialize reactive form
     this.taskForm = this.fb.group({
-      name: ["", [Validators.required, Validators.maxLength(50)]],
-      description: ["", Validators.maxLength(200)],
-      priority: ["", Validators.required],
-      dueDate: ["", [Validators.required, this.futureDateValidator()]],
+      name: ["", [Validators.required, Validators.maxLength(50)]], // Name field with required validation and max length
+      description: ["", Validators.maxLength(200)], // Description field with max length validation
+      priority: ["", Validators.required], // Priority field with required validation
+      dueDate: ["", [Validators.required, this.futureDateValidator()]], // Due date field with required and future date validation
     });
   }
 
@@ -136,16 +136,18 @@ export class TaskFormComponent implements OnInit {
       if (!control.value) {
         return null; // Let Validators.required handle empty values
       }
-      const selectedDate = new Date(control.value);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      return selectedDate > today ? null : { futureDate: true };
+      const selectedDate = new Date(control.value); // Convert to Date
+      const today = new Date(); // Get current date
+      today.setHours(0, 0, 0, 0); // Set time to 00:00:00
+      return selectedDate > today ? null : { futureDate: true }; // Return null if date is in the future
     };
   }
 
   // Submit form
   onSubmit(): void {
+    // If form is valid
     if (this.taskForm.valid) {
+      // Create task object
       const task: Task = {
         id: this.data?.id || 0,
         name: this.taskForm.get("name")?.value,
@@ -154,6 +156,7 @@ export class TaskFormComponent implements OnInit {
         dueDate: this.taskForm.get("dueDate")?.value,
         isCompleted: this.data?.isCompleted || false,
       };
+      // Close the dialog and return the task
       this.dialogRef.close(task);
     }
   }
