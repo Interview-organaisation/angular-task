@@ -1,0 +1,97 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "name": "Complete project proposal",
+      "description": "Draft proposal for client meeting",
+      "isCompleted": false,
+      "dueDate": "2026-06-05",
+      "userId": 3,
+      "categoryId": 1
+    },
+    {
+      "id": "2",
+      "name": "Review code",
+      "description": "Review pull request for team",
+      "isCompleted": true,
+      "dueDate": "2026-03-05",
+      "userId": 2,
+      "categoryId": 3
+    },
+    {
+      "id": "3",
+      "name": "Project planning session",
+      "description": "Breakdown new features and timelines",
+      "isCompleted": false,
+      "dueDate": "2025-09-20",
+      "userId": 3,
+      "categoryId": 2
+    },
+    {
+      "id": "4",
+      "name": "Ghuti",
+      "description": "Some description",
+      "isCompleted": false,
+      "dueDate": "2025-03-12",
+      "userId": 1,
+      "categoryId": 2
+    },
+    {
+      "id": "5",
+      "name": "Project planning session",
+      "description": "Breakdown new features and timelines",
+      "isCompleted": false,
+      "dueDate": "2025-09-20",
+      "userId": 2,
+      "categoryId": 1
+    },
+    {
+      "id": "6",
+      "name": "Project planning session",
+      "description": "Breakdown new features and timelines",
+      "isCompleted": false,
+      "dueDate": "2025-09-20",
+      "userId": 2,
+      "categoryId": 3
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "categoryId": 2,
+      "name": "Project planning session",
+      "description": "Breakdown new features and timelines",
+      "dueDate": "2025-09-20"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Alice",
+      "email": "alice@example.com"
+    },
+    {
+      "id": "2",
+      "name": "Bob",
+      "email": "bob@example.com"
+    },
+    {
+      "id": "3",
+      "name": "Charlie",
+      "email": "charlie@example.com"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Work"
+    },
+    {
+      "id": "2",
+      "name": "Meetings"
+    },
+    {
+      "id": "3",
+      "name": "Personal"
+    }
+  ]
+}
