@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Edit Task</h2>
+
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="isCompleted">
+      <mat-option [value]="false">In Progress</mat-option>
+      <mat-option [value]="true">Completed</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Due Date</mat-label>
+    <input matInput formControlName="dueDate">
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onClose()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()">Update</button>
+</mat-dialog-actions>
