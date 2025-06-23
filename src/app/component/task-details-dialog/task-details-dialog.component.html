@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Task Details</h2>
+<div mat-dialog-content>
+  <fieldset disabled>  
+  <form>
+    <div class="mb-3">
+      <label>Title</label>
+      <input class="form-control" [value]="data?.name" />
+    </div>
+    <div class="mb-3">
+      <label>Description</label>
+      <input class="form-control" [value]="data?.description" />
+    </div>
+    <div class="mb-3">
+      <label>Task Status</label>
+      <input class="form-control" [value]="data?.isCompleted ? 'Completed' : 'In Progress'" />
+    </div>
+    <div class="mb-3">
+      <label>Due Date</label>
+      <input class="form-control" [value]="data?.dueDate" />
+    </div>
+  </form>
+   </fieldset>
+
+  <div class="modal-footer">
+    <mat-dialog-actions align="end">
+      <button mat-button (click)="onClose()">Cancel</button>
+      <button mat-flat-button color="primary" (click)="onOk()">Ok</button>
+    </mat-dialog-actions>
+  </div>
+ 
+</div>
