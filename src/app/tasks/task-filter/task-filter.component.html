@@ -1,0 +1,19 @@
+<form [formGroup]="form" class="task-filter-form" style="display: flex; gap: 16px; align-items: center;">
+  <mat-form-field appearance="fill" style="min-width: 120px;">
+    <mat-label>Priority</mat-label>
+    <mat-select formControlName="priority">
+      <mat-option value="">All</mat-option>
+      <mat-option value="Low">Low</mat-option>
+      <mat-option value="Medium">Medium</mat-option>
+      <mat-option value="High">High</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" style="min-width: 120px;">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="">All</mat-option>
+      <mat-option value="Completed">Completed</mat-option>
+      <mat-option value="Incomplete">Incomplete</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

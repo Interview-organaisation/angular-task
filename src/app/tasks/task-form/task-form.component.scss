@@ -1,0 +1,15 @@
+.task-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+mat-form-field {
+  flex: 1 1 250px;
+  min-width: 200px;
+}
+
+button {
+  align-self: flex-end;
+}
