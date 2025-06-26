@@ -1,0 +1,42 @@
+.task-list-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .loading-spinner,
+    .no-tasks,
+    .error-message {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .error-message {
+        color: red;
+    }
+
+    table {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .priority-low {
+        color: green;
+    }
+
+    .priority-medium {
+        color: orange;
+    }
+
+    .priority-high {
+        color: red;
+        font-weight: bold;
+    }
+}

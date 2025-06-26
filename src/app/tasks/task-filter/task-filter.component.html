@@ -1,0 +1,22 @@
+<form [formGroup]="filterForm" class="filter-container">
+    <!-- Filter by Priority -->
+    <mat-form-field appearance="fill">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority">
+            <mat-option value="">All Priorities</mat-option>
+            <mat-option *ngFor="let priority of priorities" [value]="priority">
+                {{ priority }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!-- Filter by Task Status -->
+    <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+            <mat-option *ngFor="let status of statuses" [value]="status.value">
+                {{ status.label }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
